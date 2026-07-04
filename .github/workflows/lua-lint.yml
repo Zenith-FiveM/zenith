@@ -1,0 +1,21 @@
+name: Lua Lint
+
+on:
+  push:
+    paths:
+      - "**.lua"
+  pull_request:
+    paths:
+      - "**.lua"
+
+jobs:
+  luacheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run luacheck
+        uses: lunarmodules/luacheck@v1
+        with:
+          args: . --config .luacheckrc
